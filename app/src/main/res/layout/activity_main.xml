@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity">
+    tools:context=".ui.splash.SplashActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_left"
@@ -50,7 +50,7 @@
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:alpha=".2"
-        android:background="@drawable/circle_greyblue_dark1"
+        android:background="@drawable/circle_splash_outer"
         app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@id/app_name"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
         android:id="@+id/inner_circle"
         android:layout_width="102dp"
         android:layout_height="102dp"
-        android:background="@drawable/circle_watermelon_goldenyellow"
+        android:background="@drawable/circle_splash_inner"
         app:layout_constraintBottom_toBottomOf="@id/outer_circle"
         app:layout_constraintEnd_toEndOf="@id/outer_circle"
         app:layout_constraintStart_toStartOf="@id/outer_circle"
