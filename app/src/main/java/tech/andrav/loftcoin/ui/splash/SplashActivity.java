@@ -19,6 +19,6 @@ public class SplashActivity extends AppCompatActivity {
         // после задержки запустить лямбду
         new Handler().postDelayed(() -> {
             startActivity(new Intent(this, WelcomeActivity.class));
-        }, 1000);
+        }, 2000);
     }
 }
