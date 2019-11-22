@@ -14,11 +14,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
 
         // после задержки запустить лямбду
         new Handler().postDelayed(() -> {
             startActivity(new Intent(this, WelcomeActivity.class));
-        }, 2000);
+        }, 1000);
     }
 }

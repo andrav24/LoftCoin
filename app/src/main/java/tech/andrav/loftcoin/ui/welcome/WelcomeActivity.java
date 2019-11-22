@@ -1,5 +1,6 @@
 package tech.andrav.loftcoin.ui.welcome;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
 import tech.andrav.loftcoin.R;
+import tech.andrav.loftcoin.ui.main.MainActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -27,7 +29,9 @@ public class WelcomeActivity extends AppCompatActivity {
         snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
         recyclerView.swapAdapter(new WelcomePageAdapter(), false);
-
+        findViewById(R.id.btn_start).setOnClickListener((v) -> {
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+        });
     }
 
     @Override
