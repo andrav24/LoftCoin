@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 import tech.andrav.loftcoin.R;
 import tech.andrav.loftcoin.ui.main.MainActivity;
 
@@ -32,6 +33,9 @@ public class WelcomeActivity extends AppCompatActivity {
         findViewById(R.id.btn_start).setOnClickListener((v) -> {
             startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
         });
+
+        ScrollingPagerIndicator recyclerIndicator = findViewById(R.id.dot_indicator);
+        recyclerIndicator.attachToRecyclerView(recyclerView);
     }
 
     @Override
