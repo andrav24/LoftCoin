@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import ru.tinkoff.scrollingpagerindicator.ScrollingPagerIndicator;
 import tech.andrav.loftcoin.R;
+import tech.andrav.loftcoin.prefs.Settings;
 import tech.andrav.loftcoin.ui.main.MainActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -30,12 +31,16 @@ public class WelcomeActivity extends AppCompatActivity {
         snapHelper = new PagerSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
         recyclerView.swapAdapter(new WelcomePageAdapter(), false);
-        findViewById(R.id.btn_start).setOnClickListener((v) -> {
-            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
-        });
-
         ScrollingPagerIndicator recyclerIndicator = findViewById(R.id.dot_indicator);
         recyclerIndicator.attachToRecyclerView(recyclerView);
+
+        final Settings settings = new Settings(getApplicationContext());
+        findViewById(R.id.btn_start).setOnClickListener((v) -> {
+            startActivity(new Intent(WelcomeActivity.this, MainActivity.class));
+            settings.doNotShowWelcomeScreenNextTime();
+            finish();
+        });
+
     }
 
     @Override
