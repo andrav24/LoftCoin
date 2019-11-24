@@ -11,4 +11,14 @@
     <string name="rates">Курс</string>
     <string name="converter">Конвертер</string>
     <string name="add">Добавить</string>
+
+    <string name="currency_chooser">Выбор валюты</string>
+    <string name="sort">Сортировать</string>
+
+    <string name="usd">Доллар</string>
+    <string name="eur">Евро</string>
+    <string name="rub">Рубль</string>
+    <string name="wallet_created">Кошелек был создан</string>
+
+    <string name="zero_decimal">0.00</string>
 </resources>

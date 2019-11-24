@@ -9,15 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import tech.andrav.loftcoin.databinding.FragmentRatesBinding;
 import timber.log.Timber;
 
 public class RatesFragment extends Fragment {
 
+    private FragmentRatesBinding binding;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        binding = FragmentRatesBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
+
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
