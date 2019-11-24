@@ -16,6 +16,14 @@ public abstract class Coin {
 
     abstract Map<String, AutoValue_Coin_Quote> quote();
 
+    public double price() {
+        return quote().get("USD").price();
+    }
+
+    public double change24h() {
+        return quote().get("USD").change24h();
+    }
+
     @AutoValue
     abstract static class Quote {
 

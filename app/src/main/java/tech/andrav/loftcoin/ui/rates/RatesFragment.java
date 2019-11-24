@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,11 +23,13 @@ public class RatesFragment extends Fragment {
 
     private CmcApi api;
     private FragmentRatesBinding binding;
+    private RatesAdapter adapter;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         api = new CmcApiProvider().get();
+        adapter = new RatesAdapter();
     }
 
     @Nullable
@@ -46,21 +49,34 @@ public class RatesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.recycler.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        binding.recycler.setHasFixedSize(true);
+        binding.recycler.swapAdapter(adapter, false);
+        binding.refresher.setOnRefreshListener(this::refresh);
         refresh();
     }
 
+    @Override
+    public void onDestroy() {
+        binding.recycler.swapAdapter(null, false);
+        super.onDestroy();
+    }
+
     private void refresh() {
+        binding.refresher.setRefreshing(true);
         api.listings().enqueue(new Callback<Listings>() {
             @Override
             public void onResponse(Call<Listings> call, Response<Listings> response) {
+                binding.refresher.setRefreshing(false);
                 final Listings body = response.body();
                 if (body != null) {
-                    Timber.d("%s", body.coins());
+                    adapter.submitList(body.coins());
                 }
             }
 
             @Override
             public void onFailure(Call<Listings> call, Throwable t) {
+                binding.refresher.setRefreshing(false);
                 Timber.d(t);
             }
         });
