@@ -2,6 +2,8 @@ package tech.andrav.loftcoin.ui.rates;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import tech.andrav.loftcoin.R;
 import tech.andrav.loftcoin.data.CmcApi;
 import tech.andrav.loftcoin.data.CmcApiProvider;
 import tech.andrav.loftcoin.data.Listings;
@@ -43,6 +46,7 @@ public class RatesFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        setHasOptionsMenu(true);
         Timber.d("%s", this);
     }
 
@@ -54,6 +58,12 @@ public class RatesFragment extends Fragment {
         binding.recycler.swapAdapter(adapter, false);
         binding.refresher.setOnRefreshListener(this::refresh);
         refresh();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_rates, menu);
     }
 
     @Override
