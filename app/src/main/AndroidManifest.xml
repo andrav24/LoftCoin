@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="tech.andrav.loftcoin">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".LoftApp"
         android:allowBackup="false"
@@ -14,7 +16,6 @@
         tools:ignore="GoogleAppIndexingWarning">
 
         <activity android:name=".ui.splash.SplashActivity"
-            android:screenOrientation="portrait"
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
