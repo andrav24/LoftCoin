@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -64,6 +65,20 @@ public class RatesFragment extends Fragment {
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.menu_rates, menu);
+    }
+
+    // вызывается при нажатии на иконки меню
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (R.id.money_sign == item.getItemId()) {
+            new RatesCurrencyDialog().show(getChildFragmentManager(), RatesCurrencyDialog.class.getName());
+            return true;
+        }
+        if (R.id.sort_sign == item.getItemId()) {
+            // TODO: Sorting logic
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
